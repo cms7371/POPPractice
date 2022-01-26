@@ -11,3 +11,21 @@ protocol Chargeable {
     var chargemAPerHour: Double { get }
     func convert(chargeablemAPerHour: Double) -> Double
 }
+
+extension Chargeable {
+    func convert(chargeablemAPerHour: Double) -> Double {
+        return min(chargeablemAPerHour, self.chargemAPerHour)
+    }
+}
+
+struct Charger: Chargeable {
+    var chargemAPerHour: Double
+}
+
+struct MacCharger: Chargeable {
+    var chargemAPerHour: Double
+}
+
+struct WatchCharger: Chargeable {
+    var chargemAPerHour: Double
+}
